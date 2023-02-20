@@ -37,9 +37,12 @@ public class Delimiters
         int closeCount = 0;
         for (int i = 0; i < delimiters.size(); i++){
             if (delimiters.get(i).equals(openDel)){
-                openCount ++;
-            }else {
+                openCount++;
+            }else if (delimiters.get(i).equals(closeDel)) {
                 closeCount++;
+                if (closeCount > openCount){
+                    return false;
+                }
             }
         }
         if (openCount!= closeCount){
